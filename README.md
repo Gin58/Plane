@@ -3,6 +3,7 @@
 `git clone https://github.com/Gin58/Plane.git`
 
 planeフォルダの名前を任意に
+`mv Plane myapp`
 
 ## 修正要
 `docker-compose.yml`
