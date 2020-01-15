@@ -1,5 +1,5 @@
 FROM php:7.3-fpm-alpine
-LABEL maintainer "task-master"
+LABEL maintainer "plane-master"
 
 ARG TZ
 ENV COMPOSER_ALLOW_SUPERUSER 1
