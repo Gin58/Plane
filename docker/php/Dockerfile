@@ -22,13 +22,21 @@ RUN apk --no-cache update && \
     nodejs-npm \
     bash \
     vim \
-    git
-
-RUN set -eux && \
-  apk add --update-cache --no-cache --virtual=.build-dependencies tzdata && \
-  cp /usr/share/zoneinfo/${TZ} /etc/localtime && \
-  apk del .build-dependencies && \
-  docker-php-ext-install bcmath pdo_mysql && \
-  curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/bin --filename=composer && \
-  composer config -g repos.packagist composer https://packagist.jp && \
-  composer global require hirak/prestissimo
+    git \
+  && docker-php-ext-install \
+    curl \
+    dom \
+    mbstring \
+    pdo \
+    pdo_mysql \
+    simplexml \
+    zip \
+    opcache \
+  && docker-php-ext-configure gd \
+    --with-freetype-dir=/usr/include/ \
+    --with-jpeg-dir=/usr/include/ \
+    --with-png-dir=/usr/include/ \
+  && docker-php-ext-install gd \
+  && curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer \
+  && chmod +x /usr/local/bin/composer \
+  && rm -rf /var/cache/apk/*
