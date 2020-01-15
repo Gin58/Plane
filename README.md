@@ -46,3 +46,16 @@ appコンテナに入る
 
 最初の画面確認
 localhost:8080にアクセス
+
+mysqlコンテナと接続する
+`./src/.env`を書き換える
+
+```
+DB_CONNECTION=mysql
+DB_HOST=db
+DB_PORT=3306
+DB_DATABASE=plane_db
+DB_USERNAME=docker
+DB_PASSWORD=secret
+```
+プロジェクト配下の.envを参考に
