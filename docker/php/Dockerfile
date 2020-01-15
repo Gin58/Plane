@@ -1,5 +1,5 @@
 FROM php:7.3-fpm-alpine
-LABEL maintainer "plane-master"
+LABEL maintainer "task-master"
 
 ARG TZ
 ENV COMPOSER_ALLOW_SUPERUSER 1
@@ -13,7 +13,7 @@ RUN apk --no-cache update && \
     libjpeg-turbo-dev \
     libpng-dev \
     libxml2-dev \
-    zlib-dev \
+    libzip-dev \
     pcre-dev \
     g++ \
     make \
@@ -24,12 +24,7 @@ RUN apk --no-cache update && \
     vim \
     git \
   && docker-php-ext-install \
-    curl \
-    dom \
-    mbstring \
-    pdo \
     pdo_mysql \
-    simplexml \
     zip \
     opcache \
   && docker-php-ext-configure gd \
